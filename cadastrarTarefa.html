@@ -15,7 +15,7 @@
     <div class="container right-side">
         <div class="row">
             <div class="col-12">
-                <form class="input-box" name="login-form" method="post" action="">
+                <form class="input-box" name="login-form" method="" action="">
                     <header>Cadastrar Tarefa</header>
                     <div class="input-field">
                         <input type="text" class="input" name="descrição-tarefa" id="descrição-tarefa" required autocomplete="off">
@@ -25,16 +25,12 @@
                         <input type="text" class="input" name="user-fullname" id="user-fullname" required autocomplete="off">
                         <label for="user-fullname">Descrição</label>
                     </div>
-                    <div class="input-field">
-                        <input type="text" class="input" name="user-nickname" id="user-nickname" required autocomplete="off">
-                        <label for="user-nickname">Como gostaria de ser chamado?</label>
-                    </div>
                     <div class="input-field-date">
                         <label for="fim-tarefa">Qual o dia dessa tarefa?</label>
                         <input type="date" name="fim-tarefa" id="fim-tarefa">
                     </div>
                     <div class="input-field">
-                        <input type="submit" class="submit" value="Cadastrar">
+                        <input type="submit" class="submit" value="Cadastrar" onclick="location.reload()">
                     </div>
                 </form>
             </div>
