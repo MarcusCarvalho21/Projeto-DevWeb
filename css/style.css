@@ -34,7 +34,7 @@ body.tema-escuro{
 }
 
 #bg-login{
-    background-image: url(/imgs/bgEscritorio2.jpg);
+    background-image: url(./imgs/bgEscritorio2.jpg);
 }
 
 #bg-cadastro{
@@ -182,7 +182,7 @@ span a:hover{
 
 /* Style MainScreen */
 nav{
-    background-color: lightcoral;
+    background-color: #f08080;
     top: -10px;
     border-bottom: 1px solid lightgray;
     box-shadow: 2px 2px 2px lightgray;
@@ -244,7 +244,7 @@ nav{
 }
 
 #botao-cadastro{
-    background-color: #6060AB;
+    background-color: #727BD7;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -252,6 +252,38 @@ nav{
     font-family: "Righteous", sans-serif;
     font-weight: 400;
     transition: 0.1s;
+}
+
+.botoes-controle{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 15%;
+}
+
+.botao-deleta{
+    background-color: #F07F7F;
+    color: white;
+    border: none;
+    width: 25%;
+}
+
+.botao-deleta:hover{
+    background-color: #ed4646;
+}
+
+.botao-atualiza{
+    background-color: #F0D77F;
+    color: white;
+    border: none;
+    width: 25%;
+}
+
+.botao-concluir{
+    background-color: #7FF09F;
+    color: white;
+    border: none;
+    width: 25%;
 }
 
 #botao-cadastro:hover{
