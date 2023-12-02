@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load base64_encode %}
+{% block title %}Minhas Tarefas{% endblock title %}Minhas Tarefas
+
+{% block content %}
+
+<div class="col-md-9">
+    <!-- Lista de tarefas -->
+    {% if tarefas %}
+        <ul class="list-group" id="item-tarefa">
+            {% for tarefa in tarefas %}
+            <!-- Item da lista de tarefas -->
+            <li class="list-group-item lista-de-tarefas">
+                <div class="d-flex w-100 justify-content-between">
+                    {% with encoded_id=tarefa.id|base64_encode %}
+                        <h5 class="mb-1" ><a href="{% url 'verTarefa' encoded_id=encoded_id %}">{{ tarefa.titulo }}</a></h5>
+                    {% endwith %}
+                    <small>3 dias restantes</small>
+                </div>
+                <div class="d-flex w-100 justify-content-between">
+                    <p class="mb-1">{{ tarefa.descricao|default:"-" }}</p>
+                    <div class="botoes-controle">
+                        <button class="botao-deleta"><i class="bi bi-trash"></i></button>
+                        <button class="botao-atualiza"><i class="bi bi-pencil"></i></button>
+                        <button class="botao-concluir"><i class="bi bi-check-lg"></i></button>
+                    </div>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>  
+        {% else %}
+            <p>Sem tarefas cadastradas</p>
+    {% endif %}
+</div>
+{% endblock  %}
