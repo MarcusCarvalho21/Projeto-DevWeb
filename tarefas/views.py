@@ -12,7 +12,7 @@ def home(request):
             tarefa = form.save(commit=False)
             tarefa.done = 'doing'
             tarefa.save()
-    tarefas = Tarefas.objects.all().order_by('-criado_em')
+    tarefas = Tarefas.objects.all().order_by('termino')
     return render(request, "tarefas/home.html", {"tarefas": tarefas})
 
 def verTarefa(request, encoded_id):

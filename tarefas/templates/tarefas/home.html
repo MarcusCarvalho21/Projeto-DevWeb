@@ -9,27 +9,55 @@
     {% if tarefas %}
         <ul class="list-group" id="item-tarefa">
             {% for tarefa in tarefas %}
-            <!-- Item da lista de tarefas -->
-            <li class="list-group-item lista-de-tarefas">
-                <div class="d-flex w-100 justify-content-between">
-                    {% with encoded_id=tarefa.id|base64_encode %}
-                        <h5 class="mb-1" ><a href="{% url 'verTarefa' encoded_id=encoded_id %}">{{ tarefa.titulo }}</a></h5>
-                    {% endwith %}
-                    <small>3 dias restantes</small>
-                </div>
-                <div class="d-flex w-100 justify-content-between">
-                    <p class="mb-1">{{ tarefa.descricao|default:"-" }}</p>
-                    <div class="botoes-controle">
-                        <button class="botao-deleta"><i class="bi bi-trash"></i></button>
-                        <button class="botao-atualiza"><i class="bi bi-pencil"></i></button>
-                        <button class="botao-concluir"><i class="bi bi-check-lg"></i></button>
+                <!-- Item da lista de tarefas -->
+                <li class="list-group-item lista-de-tarefas">
+                    <div class="d-flex w-100 justify-content-between">
+                        {% with encoded_id=tarefa.id|base64_encode %}
+                            <h5 class="mb-1" ><a href="{% url 'verTarefa' encoded_id=encoded_id %}">{{ tarefa.titulo }}</a></h5>
+                        {% endwith %}
+                        <small class="tempoRestante" data-termino="{{ tarefa.termino }}">{{ tarefa.termino }}</small>
                     </div>
-                </div>
-            </li>
+                    <div class="d-flex w-100 justify-content-between">
+                        <p class="mb-1">{{ tarefa.descricao|default:"-" }}</p>
+                        <div class="botoes-controle">
+                            <button class="botao-deleta"><i class="bi bi-trash"></i></button>
+                            <button class="botao-atualiza"><i class="bi bi-pencil"></i></button>
+                            <button class="botao-concluir"><i class="bi bi-check-lg"></i></button>
+                        </div>
+                    </div>
+                </li>
             {% endfor %}
         </ul>  
         {% else %}
             <p>Sem tarefas cadastradas</p>
     {% endif %}
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
+<script>
+    //Script para cálcular os dias restantes das tarefas
+
+    var elementosTempoRestante = document.querySelectorAll('.tempoRestante');
+    elementosTempoRestante.forEach(function(elementoTempoRestante) {
+        var dataDeTerminoDoDB = elementoTempoRestante.getAttribute('data-termino');
+        var partesData = dataDeTerminoDoDB.split(" de ");
+        var dia = parseInt(partesData[0]);
+        var mes = partesData[1];
+        var ano = parseInt(partesData[2]);
+        var meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+        var mesNumero = meses.indexOf(mes);
+        var dataDeTermino = new Date(ano, mesNumero, dia);
+        var dataAtual = new Date();
+        dataAtual.setHours(0, 0, 0, 0);
+        var diferencaEmMilissegundos = dataDeTermino - dataAtual;
+        var diferencaEmDias = Math.ceil(diferencaEmMilissegundos / (1000 * 60 * 60 * 24));  
+        if (diferencaEmDias === 0) {
+            elementoTempoRestante.innerText = 'Hoje é o último dia!';
+        } else if (diferencaEmDias < 0) {
+            elementoTempoRestante.innerText = 'Esta tarefa já está atrasada!';
+        } else {
+            elementoTempoRestante.innerText = diferencaEmDias + ' dias restantes';
+        }
+    });
+</script>
 {% endblock  %}
