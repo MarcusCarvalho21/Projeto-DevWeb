@@ -266,10 +266,13 @@ nav{
 }
 
 .botao-deleta{
+    display: flex;
     background-color: #F07F7F;
     color: white;
     border: none;
     width: 25%;
+    justify-content: center;
+    align-items: center;
 }
 
 .botao-deleta:hover{
@@ -277,10 +280,14 @@ nav{
 }
 
 .botao-atualiza{
+    display: flex;
     background-color: #F0D77F;
     color: white;
     border: none;
     width: 25%;
+    justify-content: center;
+    align-items: center;
+    
 }
 
 .botao-atualiza:hover{
@@ -288,10 +295,13 @@ nav{
 }
 
 .botao-concluir{
+    display: flex;
     background-color: #7FF09F;
     color: white;
     border: none;
     width: 25%;
+    justify-content: center;
+    align-items: center;
 }
 
 .botao-concluir:hover{
@@ -385,6 +395,12 @@ nav{
     right: 20px;
     font-size: 20px;
     cursor: pointer;
+}
+
+.editaTarefa{
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
 }
 
 /*iframe Tela de Tarefa*/

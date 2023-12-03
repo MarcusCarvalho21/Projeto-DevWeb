@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title%}Editando {{ tarefa.titulo }}{% endblock %}
+{% block content %}
+    <div class="col-md-9">
+        <div class="container editaTarefa d-flex justify-content-center align-content-center">
+            <form class="input-box" name="formulario-atualiza" method="POST">
+                {% csrf_token %}
+                <header>Atualizar Tarefa {{ tarefa.titulo }}</header>
+                <input type="hidden" name="tarefa_id" value="{{ tarefa.id }}">
+                <div class="input-field">
+                    <input type="text" class="input" name="{{ form.titulo.name }}" id="{{ form.titulo.id_for_label }}" value="{{ form.titulo.value }}" required autocomplete="off">
+                    <label for="{{ form.titulo.id_for_label }}">Nome</label>
+                </div>
+                <div class="input-field">
+                    <input type="text" class="input" name="{{ form.descricao.name }}" id="{{ form.descricao.id_for_label }}" value="{{ form.descricao.value }}" required autocomplete="off">
+                    <label for="{{ form.descricao.id_for_label }}">Descrição</label>
+                </div>
+                <div class="input-field-date">
+                    <label for="{{ form.termino.id_for_label}}">Qual o dia dessa tarefa?</label>
+                    <input type="date" name="{{ form.termino.name }}" id="{{ form.termino.id_for_label }}" value="{{ form.termino.value|date:'Y-m-d' }}">
+                </div>
+                <div class="input-field">
+                    <input type="submit" class="submit" value="Atualizar">
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

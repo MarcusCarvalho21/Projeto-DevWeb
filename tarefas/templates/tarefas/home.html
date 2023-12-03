@@ -20,9 +20,9 @@
                     <div class="d-flex w-100 justify-content-between">
                         <p class="mb-1">{{ tarefa.descricao|default:"-" }}</p>
                         <div class="botoes-controle">
-                            <button class="botao-deleta"><i class="bi bi-trash"></i></button>
-                            <button class="botao-atualiza"><i class="bi bi-pencil"></i></button>
-                            <button class="botao-concluir"><i class="bi bi-check-lg"></i></button>
+                            <a href="#" class="botao-deleta"><i class="bi bi-trash"></i></a>
+                            <a href="edit/{{ tarefa.id }}" class="botao-atualiza"><i class="bi bi-pencil"></i></a>
+                            <a href="#" class="botao-concluir"><i class="bi bi-check-lg"></i></a>
                         </div>
                     </div>
                 </li>
@@ -33,10 +33,8 @@
     {% endif %}
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-
 <script>
     //Script para cálcular os dias restantes das tarefas
-
     var elementosTempoRestante = document.querySelectorAll('.tempoRestante');
     elementosTempoRestante.forEach(function(elementoTempoRestante) {
         var dataDeTerminoDoDB = elementoTempoRestante.getAttribute('data-termino');
