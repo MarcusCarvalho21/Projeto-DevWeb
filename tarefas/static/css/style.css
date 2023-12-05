@@ -258,6 +258,26 @@ nav{
     transition: 0.1s;
 }
 
+/* Messages */
+
+ul.messages {
+    padding: 0;
+    margin: 0;
+}
+
+ul.messages li{
+    list-style: none;
+    background-color: #62f08a;
+    border: none;
+    color: rgb(255, 255, 255);
+    font-family: "Sarala", sans-serif;
+    font-weight: 600;
+}
+
+ul.messages li.hidden{
+    display: none;
+}
+
 .botoes-controle{
     display: flex;
     flex-direction: row;

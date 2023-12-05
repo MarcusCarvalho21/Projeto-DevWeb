@@ -48,3 +48,13 @@ temaEscuro.addEventListener('change', () => {
     }
     localStorage.setItem('temaEscuroAtivo', temaEscuro.checked);
 });
+
+
+// Temporizador da mensagem de sessão
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(function() {
+        document.querySelectorAll('.messages li').forEach(function(message) {
+            message.classList.add('hidden');
+        });
+    }, 3000);
+});

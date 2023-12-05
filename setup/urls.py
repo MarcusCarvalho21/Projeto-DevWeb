@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from tarefas.views import home, verTarefa, editTarefa
+from tarefas.views import home, verTarefa, editTarefa, delTarefa
 from django.views.generic import TemplateView
 
 urlpatterns = [
@@ -24,4 +24,5 @@ urlpatterns = [
     path('', home, name='home'),
     path('tarefa/<str:encoded_id>/', verTarefa, name='verTarefa'),
     path('edit/<int:id>', editTarefa, name='editTarefa'),
+    path('deleta/<int:id>', delTarefa, name='delTarefa'),
 ]

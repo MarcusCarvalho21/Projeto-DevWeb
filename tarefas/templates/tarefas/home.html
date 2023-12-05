@@ -6,6 +6,13 @@
 
 <div class="col-md-9">
     <!-- Lista de tarefas -->
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages%}
+                <li {% if message.tags %}class="alert alert-{{  message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
     {% if tarefas %}
         <ul class="list-group" id="item-tarefa">
             {% for tarefa in tarefas %}
@@ -20,7 +27,7 @@
                     <div class="d-flex w-100 justify-content-between">
                         <p class="mb-1">{{ tarefa.descricao|default:"-" }}</p>
                         <div class="botoes-controle">
-                            <a href="#" class="botao-deleta"><i class="bi bi-trash"></i></a>
+                            <a href="deleta/{{ tarefa.id }}" class="botao-deleta"><i class="bi bi-trash"></i></a>
                             <a href="edit/{{ tarefa.id }}" class="botao-atualiza"><i class="bi bi-pencil"></i></a>
                             <a href="#" class="botao-concluir"><i class="bi bi-check-lg"></i></a>
                         </div>
