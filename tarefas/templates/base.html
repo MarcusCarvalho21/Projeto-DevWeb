@@ -23,8 +23,8 @@
                 </a>
             </div>
             <div class="col-8  search-content">
-                <form class="search-bar" role="search" action="post">
-                    <input class="input-search" type="text">
+                <form class="search-bar" role="search" method="GET">
+                    <input class="input-search" type="text" name='search' value="{{ request.GET.search }}">
                     <button class="button-search" value="submit"><i class="bi bi-search"></i></button>
                 </form>
             </div>

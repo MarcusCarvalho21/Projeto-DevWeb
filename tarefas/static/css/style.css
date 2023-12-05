@@ -457,6 +457,39 @@ ul.messages li.hidden{
     cursor: pointer;
 }
 
+/* Paginação */
+
+.pagina{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagina.dark{
+    color: white;
+}
+
+.step-links{
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.step-links .sessaoAtual{
+    margin: 0 5px;
+}
+
+.setaNavegacao{
+    color:black;
+}
+
+.setaNavegacao.dark{
+    color: lightgrey;
+}
+
+
 @keyframes fadeIn {
     from {
         opacity: 0;

@@ -18,17 +18,27 @@ function fecharTarefa(){
 const temaEscuro = document.getElementById('temaEscuro');
 const navbar = document.getElementById('BarraNavegacao');
 const temaEscuroAtivo = localStorage.getItem('temaEscuroAtivo');
+const pagina = document.querySelector('.pagina');
+const setaNavegacao = document.querySelectorAll('.setaNavegacao');
 
 // Função para aplicar o tema escuro
 function aplicarTemaEscuro() {
     document.body.classList.add('tema-escuro');
     navbar.classList.add('navbar-dark');
+    pagina.classList.add('dark');
+    setaNavegacao.forEach(function(seta) {
+        seta.classList.add('dark');
+    });
 }
 
 // Função para remover o tema escuro
 function removerTemaEscuro() {
     document.body.classList.remove('tema-escuro');
     navbar.classList.remove('navbar-dark');
+    pagina.classList.remove('dark');
+    setaNavegacao.forEach(function(seta) {
+        seta.classList.remove('dark');
+    });
 }
 
 // Função para verificar se o modo escuro está ativo

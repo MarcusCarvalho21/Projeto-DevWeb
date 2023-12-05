@@ -34,12 +34,25 @@
                     </div>
                 </li>
             {% endfor %}
-        </ul>  
+        </ul>
+        <div class="pagina">
+            <span class="step-list">
+                {% if tarefas.has_previous %}
+                    <a href="?page={{ tarefas.previous_page_number }}"><i class="bi bi-arrow-left setaNavegacao"></i></a>
+                {% endif %}
+                <span class="sessaoAtual">
+                    {{ tarefas.number }} de {{ tarefas.paginator.num_pages }}
+                </span>
+                {% if tarefas.has_next %}
+                    <a href="?page={{ tarefas.next_page_number }}"><i class="bi bi-arrow-right setaNavegacao"></i></a>
+                {% endif %}
+            </span>
+        </div> 
         {% else %}
             <p>Sem tarefas cadastradas</p>
     {% endif %}
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
 <script>
     //Script para cálcular os dias restantes das tarefas
     var elementosTempoRestante = document.querySelectorAll('.tempoRestante');

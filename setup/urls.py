@@ -21,8 +21,8 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home, name='home'),
+    path('tarefas/', home, name='home'),
     path('tarefa/<str:encoded_id>/', verTarefa, name='verTarefa'),
-    path('edit/<int:id>', editTarefa, name='editTarefa'),
-    path('deleta/<int:id>', delTarefa, name='delTarefa'),
+    path('tarefas/edit/<int:id>', editTarefa, name='editTarefa'),
+    path('tarefas/deleta/<int:id>', delTarefa, name='delTarefa'),
 ]
