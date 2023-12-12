@@ -6,9 +6,10 @@ from .models import Tarefas
 from .forms import TarefaForm
 from django.contrib import messages
 from datetime import datetime, timedelta
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
-
+@login_required(login_url='/auth/login/')
 def home(request):
 
     if request.method == 'POST':
@@ -32,6 +33,7 @@ def home(request):
         tarefas = paginator.get_page(page)
     return render(request, "tarefas/home.html", {"tarefas": tarefas})
 
+@login_required(login_url='/auth/login/')
 def editTarefa(request, id):
     tarefa = get_object_or_404(Tarefas, pk=id)
     form = TarefaForm(instance=tarefa)
@@ -45,7 +47,8 @@ def editTarefa(request, id):
             return render(request, 'tarefas/editaTarefa.html', {'form': form, 'tarefa': tarefa})
     else:
         return render(request, 'tarefas/editaTarefa.html', {'form': form, 'tarefa': tarefa})
-
+    
+@login_required(login_url='/auth/login/')
 def delTarefa(request, id):
     tarefa = get_object_or_404(Tarefas, pk=id)
     tarefa.delete()
@@ -53,7 +56,8 @@ def delTarefa(request, id):
     messages.info(request, 'Tarefa deletada com sucesso!')
 
     return redirect('/tarefas/')
-
+    
+@login_required(login_url='/auth/login/')
 def mudaStatus(request, id):
     caminho_url = request.path
     tarefa = get_object_or_404(Tarefas, pk=id)
@@ -70,7 +74,8 @@ def mudaStatus(request, id):
     else:
         messages.info(request, 'Tarefa concluida com sucesso!')
         return redirect('/tarefas/')
-
+    
+@login_required(login_url='/auth/login/')
 def perfilUser(request):
     '''Código para informar os dados para o dashboard'''
     tarefasRecentes = Tarefas.objects.filter(done='done', atualizado_em__gt=datetime.now()-timedelta(days=30)).count()
@@ -90,11 +95,13 @@ def perfilUser(request):
         page = request.GET.get('page')
         tarefas = paginator.get_page(page)
     return render(request, "tarefas/perfilUser.html", {"tarefas": tarefas, 'tarefasRecentes': tarefasRecentes, 'tarefasFeitas': tarefasFeitas, 'tarefasPendentes': tarefasPendentes})
-
+    
+@login_required(login_url='/auth/login/')
 def verTarefa(request, encoded_id):
     decoded_id = base64.b64decode(encoded_id).decode('utf-8')
     tarefa = get_object_or_404(Tarefas, pk=decoded_id)
     return render(request, 'tarefas/tarefa.html', {"tarefa": tarefa})
-
+    
+@login_required(login_url='/auth/login/')
 def cadastroTarefa(request):
     return render(request, "tarefas/cadastrarTarefa.html")

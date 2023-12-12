@@ -15,7 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from tarefas.views import home, verTarefa, editTarefa, delTarefa, mudaStatus, perfilUser
 from django.views.generic import TemplateView
 
@@ -29,4 +29,5 @@ urlpatterns = [
     path('perfil/', perfilUser, name='perfilUser'),
     path('perfil/mudastatus/<int:id>', mudaStatus, name='mudaStatusPerfil'),
     path('perfil/deleta/<int:id>', delTarefa, name='delTarefaPerfil'),
+    path('auth/', include('usuarios.urls'))
 ]

@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -5,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro | </title>
     <!--Stylesheet Local-->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <!--Bootstrap Stylesheet-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
@@ -19,10 +20,10 @@
                 </div>
             </div>
             <div class="col-md-5 right-side">
-                <form class="input-box" name="login-form" method="post" action="">
+                <form class="input-box" name="login-form" method="post" action="{% url 'cadastro' %}">{% csrf_token %}
                     <header>Cadastro</header>
                     <div class="input-field">
-                        <input type="text" class="input" name="user-email" id="user-email" required autocomplete="off">
+                        <input type="text" class="input" name="user-email" id="user-email" required>
                         <label for="user-email">Email</label>
                     </div>
                     <div class="input-field">
@@ -30,8 +31,8 @@
                         <label for="user-fullname">Nome completo</label>
                     </div>
                     <div class="input-field">
-                        <input type="text" class="input" name="user-nickname" id="user-nickname" required autocomplete="off">
-                        <label for="user-nickname">Como gostaria de ser chamado?</label>
+                        <input type="text" class="input" name="user-username" id="user-username" required autocomplete="off">
+                        <label for="user-username">Nome de usuario</label>
                     </div>
                     <div class="input-field">
                         <input type="password" class="input" name="user-pwd" id="user-pwd" required>
@@ -41,15 +42,15 @@
                         <input type="password" class="input" name="confirm-pwd" id="confirm-pwd" required>
                         <label for="confirm-pwd">Confirmar senha</label>
                     </div>
-                    <div class="input-field-checkbox">
+                    <!--div class="input-field-checkbox">
                         <input type="checkbox" class="input-checkbox" name="terms-of-use" id="terms-of-use" required>
                         <label for="terms-of-use">Aceito os termos de uso. <a href="#">Leia os termos de uso.</a></label>
-                    </div>
+                    </div-->
                     <div class="input-field">
                         <input type="submit" class="submit" value="Cadastrar">
                     </div>
                     <div class="singin">
-                        <span>Já possui uma conta? <a href="login.html">Faça login</a></span>
+                        <span>Já possui uma conta? <a href="{% url 'login' %}">Faça login</a></span>
                     </div>
                 </form>
             </div>
