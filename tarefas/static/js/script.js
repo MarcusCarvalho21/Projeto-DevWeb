@@ -20,25 +20,57 @@ const navbar = document.getElementById('BarraNavegacao');
 const temaEscuroAtivo = localStorage.getItem('temaEscuroAtivo');
 const pagina = document.querySelector('.pagina');
 const setaNavegacao = document.querySelectorAll('.setaNavegacao');
+const tituloHistorico = document.querySelector('.tituloHistorico');
+const dashboardTitulo = document.querySelectorAll('.dashboard h4');
+const dashboardValor = document.querySelectorAll('.dashboard span');
+const mensagemSemTarefas = document.getElementById('mesagemSemTarefas');
 
 // Função para aplicar o tema escuro
 function aplicarTemaEscuro() {
     document.body.classList.add('tema-escuro');
     navbar.classList.add('navbar-dark');
-    pagina.classList.add('dark');
-    setaNavegacao.forEach(function(seta) {
+    if(mensagemSemTarefas != null){
+        mensagemSemTarefas.classList.add('mesagemSemTarefas-dark');
+    }
+    dashboardTitulo.forEach(function(seta) {
         seta.classList.add('dark');
     });
+    dashboardValor.forEach(function(seta) {
+        seta.classList.add('dark');
+    });
+    if (tituloHistorico != null){
+        tituloHistorico.classList.add('dark');
+    }
+    if (pagina != null && setaNavegacao != null){
+        pagina.classList.add('dark');
+        setaNavegacao.forEach(function(seta) {
+            seta.classList.add('dark');
+        });
+    }
 }
 
 // Função para remover o tema escuro
 function removerTemaEscuro() {
     document.body.classList.remove('tema-escuro');
     navbar.classList.remove('navbar-dark');
-    pagina.classList.remove('dark');
-    setaNavegacao.forEach(function(seta) {
-        seta.classList.remove('dark');
+    if(mensagemSemTarefas != null){
+        mensagemSemTarefas.classList.remove('mesagemSemTarefas-dark');
+    }
+    dashboardTitulo.forEach(function(list) {
+        list.classList.remove('dark');
     });
+    dashboardValor.forEach(function(list) {
+        list.classList.remove('dark');
+    });
+    if (tituloHistorico != null){
+        tituloHistorico.classList.remove('dark');
+    }
+    if (pagina != null && setaNavegacao != null){
+        pagina.classList.remove('dark');
+        setaNavegacao.forEach(function(seta) {
+            seta.classList.remove('dark');
+        });
+    }
 }
 
 // Função para verificar se o modo escuro está ativo

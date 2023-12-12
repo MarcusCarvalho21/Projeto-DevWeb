@@ -282,7 +282,7 @@ ul.messages li.hidden{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    width: 15%;
+    width: 20%;
 }
 
 .botao-deleta{
@@ -325,6 +325,21 @@ ul.messages li.hidden{
 }
 
 .botao-concluir:hover{
+    background-color: #3fee70;
+}
+
+.botao-restaurar{
+    display: flex;
+    background-color: #7FF09F;
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    width: 60%;
+    justify-content: center;
+    align-items: center;
+}
+.botao-restaurar:hover{
     background-color: #3fee70;
 }
 
@@ -382,7 +397,6 @@ ul.messages li.hidden{
     transform: translateX(24px);
 }
 
-
 /*iframe Tela de Cadastro*/
 
 .telaCadastro{
@@ -421,6 +435,10 @@ ul.messages li.hidden{
     background-color: white;
     padding: 30px;
     border-radius: 10px;
+}
+
+.mesagemSemTarefas-dark{
+    color: white;
 }
 
 /*iframe Tela de Tarefa*/
@@ -489,6 +507,45 @@ ul.messages li.hidden{
     color: lightgrey;
 }
 
+.tituloHistorico{
+    font-size: 27px;
+    margin: 10px;
+    font-family: 'Righteous', sans-serif;
+    color: black;
+    font-weight: 400;
+}
+
+.dark{
+    color: white;
+}
+
+/* Dashboard */
+
+.dashboard {
+    padding: 0;
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.dashboard h4{
+    font-size: 20px;
+    font-family: 'Righteous', sans-serif;
+}
+
+.dashboard span{
+    font-size: 40px;
+    display: block;
+    width: 100%;
+}
+
+.dashboard-box{
+    float: left;
+    color: black;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
 
 @keyframes fadeIn {
     from {
@@ -509,13 +566,20 @@ ul.messages li.hidden{
     .search-bar{
         width: 90%;
     }
+    .botoes-controle{
+        width: 35%;
+        height: 100%;
+    }
 }
 
-@media(min-width: 720px ) and (max-width: 1150px){
+@media(min-width: 720px ) and (max-width: 1350px){
     .conteudo-cadastro{
         width: 60%;
     }
     .conteudo-tarefa{
         width: 60%;
+    }
+    .botoes-controle{
+        width: 30%;
     }
 }

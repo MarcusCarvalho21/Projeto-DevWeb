@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}Perfil Usuário{% endblock title %}
+{% block content %}
+<div class="col-md-9">
+    <div class="container dashboard">
+        <div class="row">
+            <div class="col-4 dashboard-box">
+                <h4>Finalizadas no últimos 30 dias</h4>
+                <span>{{ tarefasRecentes }}</span>
+            </div>
+            <div class="col-4 dashboard-box">
+                <h4>Tarefas finalizadas</h4>
+                <span>{{ tarefasFeitas}}</span>
+            </div>
+            <div class="col-4 dashboard-box">
+                <h4>Tarefas pendentes</h4>
+                <span>{{ tarefasPendentes}}</span>
+            </div>
+        </div>
+    </div>
+    <h1 class="tituloHistorico">Histórico</h1>
+    <!-- Lista de tarefas -->
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages%}
+                <li {% if message.tags %}class="alert alert-{{  message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {% if tarefas %}
+        <ul class="list-group" id="item-tarefa">
+            {% for tarefa in tarefas %}
+                <!-- Item da lista de tarefas -->
+                <li class="list-group-item lista-de-tarefas">
+                    <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1" >{{ tarefa.titulo }}</h5>
+                            <small class="tempoRestante">{{ tarefa.finalizado_em }}</small>
+                    </div>
+                    <div class="d-flex w-100 justify-content-between">
+                        <p class="mb-1">{{ tarefa.descricao|default:"-" }}</p>
+                        <div class="botoes-controle">
+                            <a href="deleta/{{ tarefa.id }}" class="botao-deleta"><i class="bi bi-trash"></i></a>
+                            <a href="mudastatus/{{ tarefa.id }}" class="botao-restaurar">Restaurar</a>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+        <div class="pagina">
+            <span class="step-list">
+                {% if tarefas.has_previous %}
+                    <a href="?page={{ tarefas.previous_page_number }}"><i class="bi bi-arrow-left setaNavegacao"></i></a>
+                {% endif %}
+                <span class="sessaoAtual">
+                    {{ tarefas.number }} de {{ tarefas.paginator.num_pages }}
+                </span>
+                {% if tarefas.has_next %}
+                    <a href="?page={{ tarefas.next_page_number }}"><i class="bi bi-arrow-right setaNavegacao"></i></a>
+                {% endif %}
+            </span>
+        </div> 
+        {% else %}
+            <p id="mesagemSemTarefas">Sem tarefas concluidas</p>
+    {% endif %}
+</div>
+{% endblock %}
