@@ -40,7 +40,6 @@
                     <a href="#" class="list-group-item list-group-item-action" id="botao-cadastro" onclick="abrirCadastro()">Cadastrar tarefa</a>
                     <a href="{% url 'home' %}" class="list-group-item list-group-item-action item-de-menu">Tarefas cadastradas</a>
                     <a href="/perfil" class="list-group-item list-group-item-action item-de-menu">Perfil</a>
-                    <a href="#" class="list-group-item list-group-item-action item-de-menu">Configurações</a>
                     <a href="#" class="list-group-item list-group-item-action item-de-menu">Sair</a>
                 </div>
                 <!--Botão para ativar o tema escuro-->
@@ -103,9 +102,9 @@
         </button>
         <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#" id="botao-cadastro" onclick="abrirCadastro()">Cadastrar tarefa</a></li>
-            <li><a class="dropdown-item" href="#">Tarefas cadastradas</a></li>
-            <li><a class="dropdown-item" href="#">Perfil</a></li>
-            <li><a class="dropdown-item" href="#">Configurações</a></li>
+            <li><a class="dropdown-item" href="{% url 'home' %}">Tarefas cadastradas</a></li>
+            <li><a class="dropdown-item" href="/perfil">Perfil</a></li>
+            <li><a class="dropdown-item" href="#">Sair</a></li>
             <li>
                 <div class="botao-temaEscuro">
                     <input type="checkbox" class="checkbox" name="temaEscuro" id="temaEscuro">

@@ -10,14 +10,15 @@
             </div>
             <div class="col-4 dashboard-box">
                 <h4>Tarefas finalizadas</h4>
-                <span>{{ tarefasFeitas}}</span>
+                <span>{{ tarefasFeitas }}</span>
             </div>
             <div class="col-4 dashboard-box">
                 <h4>Tarefas pendentes</h4>
-                <span>{{ tarefasPendentes}}</span>
+                <span>{{ tarefasPendentes }}</span>
             </div>
         </div>
     </div>
+    <div id="donutchart"></div>
     <h1 class="tituloHistorico">Histórico</h1>
     <!-- Lista de tarefas -->
     {% if messages %}
@@ -38,7 +39,7 @@
                     </div>
                     <div class="d-flex w-100 justify-content-between">
                         <p class="mb-1">{{ tarefa.descricao|default:"-" }}</p>
-                        <div class="botoes-controle">
+                        <div class="col-5 col-sm-4 col-lg-3 botoes-controle">
                             <a href="deleta/{{ tarefa.id }}" class="botao-deleta"><i class="bi bi-trash"></i></a>
                             <a href="mudastatus/{{ tarefa.id }}" class="botao-restaurar">Restaurar</a>
                         </div>
@@ -63,4 +64,34 @@
             <p id="mesagemSemTarefas">Sem tarefas concluidas</p>
     {% endif %}
 </div>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+  google.charts.load("current", {packages:["corechart"]});
+  google.charts.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+        ['Task', 'Completed'],
+        ['Concluídas',    {{ tarefasFeitas }}],
+        ['Pendente',     {{ tarefasPendentes }}]
+    ]);
+
+    var options = {
+      legend: 'none',
+      pieHole: 0.6,
+      pieSliceText: 'none',
+      backgroundColor: 'transparent',
+      colors: ['#7FF09F', '#F07F7F']
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+    chart.draw(data, options);
+
+    window.addEventListener('resize', function(){
+      chart.draw(data, options);
+    });
+  }
+</script>
+
+
 {% endblock %}
