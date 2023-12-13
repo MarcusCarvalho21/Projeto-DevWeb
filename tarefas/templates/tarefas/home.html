@@ -20,7 +20,7 @@
                 <li class="list-group-item lista-de-tarefas">
                     <div class="d-flex w-100 justify-content-between">
                         {% with encoded_id=tarefa.id|base64_encode %}
-                            <h5 class="mb-1" ><a href="{% url 'verTarefa' encoded_id=encoded_id %}">{{ tarefa.titulo }}</a></h5>
+                            <h5 class="mb-1" >{{ tarefa.titulo }}</h5>
                         {% endwith %}
                         {% if tarefa.done == 'doing' %}
                             <small class="tempoRestante" data-termino="{{ tarefa.termino }}">{{ tarefa.termino }}</small>
