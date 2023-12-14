@@ -9,6 +9,9 @@ from datetime import datetime, timedelta
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+def index(request):
+    return render(request, 'tarefas/index.html')
+
 @login_required(login_url='/auth/login/')
 def home(request):
 
