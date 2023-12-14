@@ -283,9 +283,7 @@ ul.messages {
 
 ul.messages li{
     list-style: none;
-    background-color: #62f08a;
     border: none;
-    color: rgb(255, 255, 255);
     font-family: "Sarala", sans-serif;
     font-weight: 600;
 }

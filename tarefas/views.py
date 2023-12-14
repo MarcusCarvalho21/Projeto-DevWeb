@@ -22,7 +22,7 @@ def home(request):
             tarefa.done = 'doing'
             tarefa.user = request.user
             tarefa.save()
-            messages.info(request, 'Tarefa criada com sucesso!')
+            messages.success(request, 'Tarefa criada com sucesso!')
     
     search = request.GET.get('search')
     if search:
@@ -45,7 +45,7 @@ def editTarefa(request, id):
         form = TarefaForm(request.POST, instance=tarefa)
         if form.is_valid():
             tarefa.save()
-            messages.info(request, 'Tarefa editada com sucesso!')
+            messages.success(request, 'Tarefa editada com sucesso!')
             return redirect('/tarefas/')
         else:
             return render(request, 'tarefas/editaTarefa.html', {'form': form, 'tarefa': tarefa})
@@ -57,7 +57,7 @@ def delTarefa(request, id):
     tarefa = get_object_or_404(Tarefas, pk=id)
     tarefa.delete()
 
-    messages.info(request, 'Tarefa deletada com sucesso!')
+    messages.success(request, 'Tarefa excluida com sucesso!')
 
     return redirect('/tarefas/')
     
@@ -73,10 +73,10 @@ def mudaStatus(request, id):
     tarefa.save()
     print(f'{caminho_url}')
     if caminho_url.startswith('/perfil/mudastatus/'):
-        messages.info(request, 'Tarefa restaurada com sucesso!')
+        messages.success(request, 'Tarefa restaurada com sucesso!')
         return redirect('/perfil/')
     else:
-        messages.info(request, 'Tarefa concluida com sucesso!')
+        messages.success(request, 'Tarefa concluida com sucesso!')
         return redirect('/tarefas/')
     
 @login_required(login_url='/auth/login/')

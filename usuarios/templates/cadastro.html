@@ -22,6 +22,13 @@
             </div>
             <div class="col-md-5 right-side">
                 <form class="input-box" name="login-form" method="post" action="{% url 'cadastro' %}">{% csrf_token %}
+                    {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages%}
+                            <li {% if message.tags %}class="alert alert-{{  message.tags }}"{% endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
                     <header>Cadastro</header>
                     <div class="input-field">
                         <input type="text" class="input" name="user-email" id="user-email" required>

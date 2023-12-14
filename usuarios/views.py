@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.http import HttpResponse
+from django.contrib import messages
 from django.contrib.auth import authenticate, user_logged_out
 from django.contrib.auth import login as login_django
 def cadastro(request):
@@ -11,15 +12,24 @@ def cadastro(request):
         name = request.POST.get('user-fullname')
         username = request.POST.get('user-username')
         senha = request.POST.get('user-pwd')
+        confirmasenha = request.POST.get('confirm-pwd')
 
         user = User.objects.filter(username = username).first()
+        verificaremail = User.objects.filter(email = email).first()
 
         if user:
-            return HttpResponse('Já existe')
+            messages.error(request, 'Nome de usuario já em uso')
+        if verificaremail:
+            messages.error(request, 'Email já em uso')
+        if senha != confirmasenha:
+            messages.error(request, 'As senhas não combinam')
 
-        user = User.objects.create_user(username=username, email=email, first_name=name, password=senha)
-        user.save()
-        return redirect('/auth/login/')
+        if not messages:
+            user = User.objects.create_user(username=username, email=email, first_name=name, password=senha)
+            user.save()
+            messages.success(request, 'Usuário cadastrado com sucesso')
+        
+        return redirect('/auth/cadastro/')
             
 
 def login(request):
@@ -35,15 +45,10 @@ def login(request):
             login_django(request, user)
             return redirect('/tarefas/')
         else:
-            return HttpResponse('Falha')
+            messages.error(request, 'Usuário ou senha incorretos')
+            return redirect('/auth/login/')
         
 def logout(request):
-    """
-    Removes the authenticated user's ID from the request and flushes their
-    session data.
-    """
-    # Dispatch the signal before the user is logged out so the receivers have a
-    # chance to find out *who* logged out.
     user = getattr(request, 'user', None)
     if user.is_authenticated:
         user = None
@@ -53,5 +58,6 @@ def logout(request):
     if hasattr(request, 'user'):
         from django.contrib.auth.models import AnonymousUser
         request.user = AnonymousUser()
-    
+
+    messages.info(request, 'Você encerrou sua sessão')
     return redirect('/auth/login')

@@ -23,6 +23,13 @@
             </div>
             <div class="col-md-5 right-side">
                 <form class="input-box" name="login-form" method="post" action="{% url 'login' %}">{% csrf_token %}
+                    {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages%}
+                            <li {% if message.tags %}class="alert alert-{{  message.tags }}"{% endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
                     <header>Login</header>
                     <div class="input-field">
                         <input type="text" class="input" name="user-username" id="user-username" required autocomplete="off">
