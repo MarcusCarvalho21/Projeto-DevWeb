@@ -2,6 +2,10 @@
 {% block title %}Perfil Usuário{% endblock title %}
 {% block content %}
 <div class="col-md-9">
+    <div class="user-description">
+        <span class="username">{{ user.first_name }}</span>
+        <span class="user">{{ user }}</span>
+    </div>
     <div class="container dashboard">
         <div class="row">
             <div class="col-4 dashboard-box">

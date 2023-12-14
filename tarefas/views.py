@@ -17,17 +17,18 @@ def home(request):
         if form.is_valid():
             tarefa = form.save(commit=False)
             tarefa.done = 'doing'
+            tarefa.user = request.user
             tarefa.save()
             messages.info(request, 'Tarefa criada com sucesso!')
     
     search = request.GET.get('search')
     if search:
-        tarefas_lista = Tarefas.objects.filter(titulo__icontains=search, done='doing')
+        tarefas_lista = Tarefas.objects.filter(titulo__icontains=search, done='doing', user=request.user)
         paginator = Paginator(tarefas_lista, 5)
         page = request.GET.get('page')
         tarefas = paginator.get_page(page)
     else:
-        tarefas_lista = Tarefas.objects.filter(done='doing').order_by('termino')
+        tarefas_lista = Tarefas.objects.filter(done='doing').order_by('termino').filter(user=request.user)
         paginator = Paginator(tarefas_lista, 5)
         page = request.GET.get('page')
         tarefas = paginator.get_page(page)
@@ -78,19 +79,19 @@ def mudaStatus(request, id):
 @login_required(login_url='/auth/login/')
 def perfilUser(request):
     '''Código para informar os dados para o dashboard'''
-    tarefasRecentes = Tarefas.objects.filter(done='done', atualizado_em__gt=datetime.now()-timedelta(days=30)).count()
-    tarefasFeitas = Tarefas.objects.filter(done='done').count()
-    tarefasPendentes = Tarefas.objects.filter(done='doing').count()
+    tarefasRecentes = Tarefas.objects.filter(done='done', user=request.user, atualizado_em__gt=datetime.now()-timedelta(days=30)).count()
+    tarefasFeitas = Tarefas.objects.filter(done='done', user=request.user).count()
+    tarefasPendentes = Tarefas.objects.filter(done='doing', user=request.user).count()
 
     '''Código para listar tarefas do histórico'''
     search = request.GET.get('search')
     if search:
-        tarefas_lista = Tarefas.objects.filter(titulo__icontains=search, done='done')
+        tarefas_lista = Tarefas.objects.filter(titulo__icontains=search, done='done', user=request.user)
         paginator = Paginator(tarefas_lista, 5)
         page = request.GET.get('page')
         tarefas = paginator.get_page(page)
     else:
-        tarefas_lista = Tarefas.objects.filter(done='done').order_by('termino')
+        tarefas_lista = Tarefas.objects.filter(done='done').order_by('termino').filter(user=request.user)
         paginator = Paginator(tarefas_lista, 5)
         page = request.GET.get('page')
         tarefas = paginator.get_page(page)
@@ -105,3 +106,20 @@ def verTarefa(request, encoded_id):
 @login_required(login_url='/auth/login/')
 def cadastroTarefa(request):
     return render(request, "tarefas/cadastrarTarefa.html")
+
+def logout(request):
+    """
+    Removes the authenticated user's ID from the request and flushes their
+    session data.
+    """
+    # Dispatch the signal before the user is logged out so the receivers have a
+    # chance to find out *who* logged out.
+    user = getattr(request, 'user', None)
+    if hasattr(user, 'is_authenticated') and not user.is_authenticated():
+        user = None
+    user_logged_out.send(sender=user.__class__, request=request, user=user)
+
+    request.session.flush()
+    if hasattr(request, 'user'):
+        from django.contrib.auth.models import AnonymousUser
+        request.user = AnonymousUser()

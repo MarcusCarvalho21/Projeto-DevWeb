@@ -42,10 +42,11 @@ body.tema-escuro{
 }
 
 .logo-login{
-    width: 35px;
+    width: 105px;
     position: absolute;
     top: 30px;
     left: 30px;
+    
 }
 
 .text-login{
@@ -54,16 +55,32 @@ body.tema-escuro{
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
-    font-size: 20px;
+    font-size: 42px;
     font-family: 'Sarala', sans-serif;
     font-weight: 500;
 }
 
 i{
     font-weight: 400;
-    font-size: 15px;
+    font-size: 22px;
 }
-
+.user-description{
+    width: 100%;
+    height: 10%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 5px;
+}   
+.user-description .username{
+    font-size: x-large;
+}
+.user-description .user{
+    font-size: large;
+}
 .right-side{
     display: flex;
     justify-content: center;

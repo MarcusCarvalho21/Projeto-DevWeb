@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth import get_user_model
 
 # Create your models here.
 
@@ -13,6 +14,7 @@ class Tarefas(models.Model):
         max_length=5,
         choices=STATUS,
     )
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     criado_em = models.DateField(auto_now_add=True, null=False, blank=False)
     atualizado_em = models.DateTimeField(auto_now=True)
     termino = models.DateField(null=False, blank=False)
