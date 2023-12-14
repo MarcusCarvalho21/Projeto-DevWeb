@@ -46,7 +46,6 @@ body.tema-escuro{
     position: absolute;
     top: 30px;
     left: 30px;
-    
 }
 
 .text-login{
@@ -495,7 +494,7 @@ ul.messages li.hidden{
 /* Paginação */
 
 .pagina{
-    margin-top: 20px;
+    margin-top: 21px;
     margin-bottom: 20px;
     display: flex;
     justify-content: center;
@@ -608,4 +607,158 @@ ul.messages li.hidden{
         width: 30%;
         height: 33px;
     }
+}
+
+/* Landing Page*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Righteous&family=Sarala:wght@400;700&display=swap');
+
+html {scroll-behavior: smooth;}
+
+.header{
+    z-index: 2;
+}
+
+.container-custom {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 0 1rem;
+    margin: 0 auto;
+}
+
+.logo-image{
+    height: 60px;
+    width: 60px;
+}
+.botoesNav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 180px;
+}
+
+.botaoLogin{
+    text-decoration: none;
+    color: rgb(244, 244, 244);
+    font-family: 'Montessart', sans-serif;
+    font-weight: 400;
+    transition: 0.5s;
+}
+
+.botaoLogin:hover{
+    color: rgb(207, 207, 207);
+}
+
+.botaoCadastro{
+    text-decoration: none;
+    color: rgb(244, 244, 244);
+    font-family: 'Montessart', sans-serif;
+    font-weight: 400;
+    border: 1.7px solid rgb(244, 244, 244);
+    border-radius: 7px;
+    padding: 7px;
+    transition: 0.3s;
+}
+
+.botaoCadastro:hover{
+    color: rgb(207, 207, 207);
+    border: 1.7px solid rgb(207, 207, 207);
+}
+
+/*Banner com vídeo*/
+
+.conteiner-video{
+    position: relative;
+    height: 100vh;
+    background-color: #0a1118;
+    overflow: hidden;
+}
+
+.banner-cabecalho{
+    font-size: 30px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.banner-texto {
+    display: block;
+    margin: 0 auto;
+    font-size: 18px;
+    width: 80%;
+}
+
+@media (max-width: 720px){
+    .banner-cabecalho{
+        font-size: 20px;
+    }
+    
+}
+
+.video-baner{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%,-50%);
+}
+
+.filtro-video{
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background-color: #1B2B40;
+    opacity: 0.6;
+    z-index: 1;
+}
+
+.texto-banner{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    z-index: 1;
+}
+
+.texto-banner-width{
+    max-width: 700px;
+}
+
+.botaoScroll{
+    position: absolute;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    z-index: 1;
+}
+
+.botaoScroll:hover{
+    opacity: 0.8;
+}
+
+.recursos p{
+    text-align: justify;
+}
+
+.rodape{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #151B20;
+    height: 40vh;
+}
+
+.rodape img{
+    width: 100px;
+    height: 100px;
 }

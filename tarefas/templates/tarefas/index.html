@@ -1,0 +1,105 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="imgs/logo1-novo.png" type="image/x-icon">
+    <title>Smoothflow</title>
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <!--Bootstrap Stylesheet-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Bootstrap Icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Righteous&family=Sarala:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!--Sessão de Cabeçalho-->
+    <header class="header p-3 position-absolute start-0 top-0 end-0">
+        <div class="d-flex px-3 justify-content-between align-itens-center">
+            <a href="/"><img src="{% static 'imgs/logo1-novo.png'%}" alt="logo smoothflow" class="logo-image"></a>
+            <div class="botoesNav">
+                <a href="auth/login/" class="botaoLogin">Entrar</a>
+                <a href="auth/cadastro/"class="botaoCadastro">Cadastrar-se</a>
+            </div>
+        </div>
+    </header>
+    <!--Sessão de Vídeo-->
+    <section class="conteiner-video">
+        <div class="filtro-video"></div>
+        <video playsinline="'playsinline" autoplay="autoplay" muted="muted" loop="loop"
+        loading="lazy" class="video-baner">
+        <source src="{% static 'videos/Video2-refeito.mp4' %}" type="video/mp4">
+        </video>
+
+        <div class="texto-banner h-100 container-custom position-relative">
+            <div class="d-flex h-100 align-items-center texto-banner-width">
+                <div class="text-white">
+                    <h1 class="banner-cabecalho fw-bold mb-3">Organize sua vida, conquiste seus objetivos.</h1>
+                    <p class="banner-texto mb-4">Transforme o caos em produtividade com o nosso gerenciador de tarefas intuitivo.</p>
+                    <a href="auth/cadastro/" class="banner-botao mt-2 btn btn-md btn-outline-light" role="button">Registre-se Agora</a>
+                </div>
+            </div>
+        </div>
+        <a href="#scroll-down" class="botaoScroll">
+            Ver mais <i class="bi bi-arrow-down-short"></i>
+        </a>
+    </section>
+
+    <a id="scroll-down"></a>
+
+    <section class="recursos container-custom p-5">
+        <div class="row">
+            <div class="col-12 col-sm-6 d-md-flex justify-content-md-ceneter">
+                <img src="{% static 'imgs/tarefas-img1.png' %}" alt="Lista de tarefas do site" class="img-fluid p-4 recursos-lista" loading="lazy" width="100%" height="100%">
+            </div>
+            <div class="col-12 col-sm-6 align-self-center justify-content-md-ceneter">
+                <h2>1 - Gerenciador de Tarefas Eficiente</h2>
+                <p>Desfrute de uma lista de tarefas interativa, onde cada item pode ser facilmente gerenciado. Deletar tarefas desnecessárias, atualizar informações importantes ou marcar como concluídas com apenas alguns cliques. Nosso objetivo é proporcionar a você o controle total sobre suas responsabilidades, tornando a gestão de tarefas uma experiência eficiente e descomplicada.</p>
+            </div>
+        </div>
+    </section>
+    <section class="recursos container-custom" style="background-color: #F1F1F1;">
+        <div class="row">
+            <div class="col-12 col-sm-6 align-self-center justify-content-md-ceneter p-5">
+                <h2>2 - Dashboard Personalizado para o seu Progresso</h2>
+                <p>Explore o seu Dashboard Personalizado, projetado para proporcionar uma visão abrangente do seu desempenho e progresso. Aqui, você encontrará informações valiosas sobre suas tarefas nos últimos 30 dias, tarefas concluídas e pendentes, tudo em um só lugar.</p>
+            </div>
+            <div class="col-12 col-sm-6 d-md-flex justify-content-ceneter justify-content-md-ceneter">
+                <img src="{% static 'imgs/tarefas-img2.png' %}" alt="Lista de tarefas do site" class="img-fluid p-4 pt-0 recursos-lista" loading="lazy" width="100%" height="100%">
+            </div>
+        </div>
+    </section>
+    <section class="recursos container-custom">
+        <div class="row">
+            <div class="col-12 col-sm-6 d-md-flex justify-content-md-ceneter">
+                <img src="{% static 'imgs/tarefas-img3.png' %}" alt="Lista de tarefas do site" class="img-fluid p-4 pt-5 ms-5 mt-2 recursos-lista" loading="lazy" width="70%" height="100%">
+            </div>
+            <div class="col-12 col-sm-6 align-self-center justify-content-md-ceneter p-5">
+                <h2>3 - Experiência Responsiva em Qualquer Dispositivo</h2>
+                <p>Explore o seu Dashboard Personalizado, projetado para proporcionar uma visão abrangente do seu desempenho e progresso. Aqui, você encontrará informações valiosas sobre suas tarefas nos últimos 30 dias, tarefas concluídas e pendentes, tudo em um só lugar.</p>
+            </div>
+        </div>
+    </section>
+    <section class="recursos container-custom" style="background-color: #F1F1F1;">
+        <div class="row">
+            <div class="col-12 col-sm-6 align-self-center justify-content-md-ceneter p-5">
+                <h2>4 - Navegue com Conforto, mesmo à Noite</h2>
+                <p>Introduzimos o Modo Noturno no nosso Gerenciador de Tarefas para proporcionar uma experiência de usuário agradável e suave, independentemente das condições de iluminação. Agora, você pode ajustar a aparência do site para um tema mais suave, ideal para uso noturno.</p>
+            </div>
+            <div class="col-12 col-sm-6 d-md-flex justify-content-ceneter justify-content-md-ceneter">
+                <img src="{% static 'imgs/tarefas-img4.png' %}" alt="Lista de tarefas do site" class="img-fluid p-4 pt-0 recursos-lista" loading="lazy" width="100%" height="100%">
+            </div>
+        </div>
+    </section>
+    <footer class="rodape py-3">
+        <a href="/"><img src="{% static 'imgs/logo1-novo.png'%}" class="img-fluid" alt="Logo do Rodapé"></a>
+      </footer>
+    <!--Bootstrap JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
