@@ -65,20 +65,41 @@ i{
 }
 .user-description{
     width: 100%;
-    height: 10%;
+    height: auto;
     background-color: white;
     display: flex;
     justify-content: center;
     align-items: flex-start;
     flex-direction: column;
-    padding: 20px;
-    border-radius: 5px;
+    padding: 7px 20px;
+    border-radius: 7px;
+    margin-bottom: 15px;
 }   
 .user-description .username{
     font-size: x-large;
+    font-family: 'Sarala', sans-serif;
 }
 .user-description .user{
     font-size: large;
+    font-family: 'Sarala', sans-serif;
+    margin-top: -10px;
+    opacity: 0.5;
+}
+
+.user-description .texto-user{
+    margin-top: 0px;
+    font-size: 20px;
+    font-family: 'Sarala', sans-serif;
+}
+
+hr {
+    position: relative;
+    top: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.312);
+    width: 100%;
+    height: 0.1px;
 }
 .right-side{
     display: flex;
@@ -307,10 +328,13 @@ ul.messages li.hidden{
     width: 25%;
     justify-content: center;
     align-items: center;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.401);
+    transition: 0.4s;
 }
 
 .botao-deleta:hover{
     background-color: #ed4646;
+    box-shadow: 3px 3.5px 4px rgba(0, 0, 0, 0.462);
 }
 
 .botao-atualiza{
@@ -321,11 +345,13 @@ ul.messages li.hidden{
     width: 25%;
     justify-content: center;
     align-items: center;
-    
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.401);
+    transition: 0.4s;
 }
 
 .botao-atualiza:hover{
     background-color: #efcc4d;
+    box-shadow: 3px 3.5px 4px rgba(0, 0, 0, 0.462);
 }
 
 .botao-concluir{
@@ -336,10 +362,13 @@ ul.messages li.hidden{
     width: 25%;
     justify-content: center;
     align-items: center;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.401);
+    transition: 0.4s;
 }
 
 .botao-concluir:hover{
     background-color: #3fee70;
+    box-shadow: 3px 3.5px 4px rgba(0, 0, 0, 0.462);
 }
 
 .botao-restaurar{
@@ -352,9 +381,12 @@ ul.messages li.hidden{
     width: 60%;
     justify-content: center;
     align-items: center;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.401);
+    transition: 0.4s;
 }
 .botao-restaurar:hover{
     background-color: #3fee70;
+    box-shadow: 3px 3.5px 4px rgba(0, 0, 0, 0.462);
 }
 
 #botao-cadastro:hover{
@@ -746,6 +778,7 @@ html {scroll-behavior: smooth;}
 
 .recursos p{
     text-align: justify;
+    font-size: 17px;
 }
 
 .rodape{
