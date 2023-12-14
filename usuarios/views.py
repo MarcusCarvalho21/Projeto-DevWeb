@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, user_logged_out
 from django.contrib.auth import login as login_django
 def cadastro(request):
+    error = 0
     if request.method == 'GET':
         return render(request, 'cadastro.html')
     else:
@@ -19,16 +20,23 @@ def cadastro(request):
 
         if user:
             messages.error(request, 'Nome de usuario já em uso')
+            error += 1
         if verificaremail:
             messages.error(request, 'Email já em uso')
+            error += 1
+
         if senha != confirmasenha:
             messages.error(request, 'As senhas não combinam')
+            error += 1
 
-        if not messages:
+        
+        if error > 0:
+            return redirect('/auth/cadastro/#')
+        else:
             user = User.objects.create_user(username=username, email=email, first_name=name, password=senha)
             user.save()
             messages.success(request, 'Usuário cadastrado com sucesso')
-        
+            
         return redirect('/auth/cadastro/')
             
 
