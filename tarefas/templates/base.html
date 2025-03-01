@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="{% static 'imgs/logo1-novo.png'%}">
+    <link rel="icon" type="image/x-icon" href="{% static 'imgs/logo.png'%}">
     <title>{% block title %}{% endblock %}</title>
     <!--Stylesheet Local-->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -19,7 +19,7 @@
         <div class="container-fluid nav-content nav-content">
             <div class="col-2 col-sm-2 brand-content">
                 <a class="navbar-brand" href="{% url 'home' %}">
-                    <img src="{% static 'imgs/logo1-novo.png'%}" alt="Logo SmoothFlow" width="55" height="55">
+                    <img src="{% static 'imgs/logo.png'%}" alt="Logo SmoothFlow" width="55" height="55">
                 </a>
             </div>
             <div class="col-8  search-content">
@@ -37,9 +37,9 @@
             <div class="col-md-3 d-none d-md-block">
                 <!-- Menu de Navegação Lateral -->
                 <div class="list-group">
-                    <a href="#" class="list-group-item list-group-item-action" id="botao-cadastro" onclick="abrirCadastro()">Cadastrar tarefa</a>
-                    <a href="{% url 'home' %}" class="list-group-item list-group-item-action item-de-menu">Tarefas cadastradas</a>
-                    <a href="/perfil" class="list-group-item list-group-item-action item-de-menu">Perfil</a>
+                    <a href="#" class="list-group-item list-group-item-action" id="botao-cadastro" onclick="abrirCadastro()">Nova tarefa</a>
+                    <a href="{% url 'home' %}" class="list-group-item list-group-item-action item-de-menu">Tarefas pendentes</a>
+                    <a href="/dashboard" class="list-group-item list-group-item-action item-de-menu">Dashboard</a>
                     <a href="/auth/logout" class="list-group-item list-group-item-action item-de-menu">Sair</a>
                 </div>
                 <!--Botão para ativar o tema escuro-->

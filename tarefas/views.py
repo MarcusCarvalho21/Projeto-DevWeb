@@ -72,16 +72,16 @@ def mudaStatus(request, id):
     tarefa.finalizado_em = datetime.now().date()
     tarefa.save()
     print(f'{caminho_url}')
-    if caminho_url.startswith('/perfil/mudastatus/'):
+    if caminho_url.startswith('/dashboard/mudastatus/'):
         messages.success(request, 'Tarefa restaurada com sucesso!')
-        return redirect('/perfil/')
+        return redirect('/dashboard/')
     else:
         messages.success(request, 'Tarefa concluida com sucesso!')
         return redirect('/tarefas/')
     
 @login_required(login_url='/auth/login/')
 def perfilUser(request):
-    '''Código para informar os dados para o dashboard'''
+    '''Código para informar os dados para o dashboardboard'''
     tarefasRecentes = Tarefas.objects.filter(done='done', user=request.user, atualizado_em__gt=datetime.now()-timedelta(days=30)).count()
     tarefasFeitas = Tarefas.objects.filter(done='done', user=request.user).count()
     tarefasPendentes = Tarefas.objects.filter(done='doing', user=request.user).count()
