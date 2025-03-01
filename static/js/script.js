@@ -15,6 +15,7 @@ function fecharTarefa(){
     document.getElementById('telaTarefa').style.display = "none"
 }
 
+
 const temaEscuro = document.getElementById('temaEscuro');
 const navbar = document.getElementById('BarraNavegacao');
 const temaEscuroAtivo = localStorage.getItem('temaEscuroAtivo');
@@ -24,6 +25,26 @@ const tituloHistorico = document.querySelector('.tituloHistorico');
 const dashboardTitulo = document.querySelectorAll('.dashboard h4');
 const dashboardValor = document.querySelectorAll('.dashboard span');
 const mensagemSemTarefas = document.getElementById('mesagemSemTarefas');
+
+function verificaSenha(){
+    ul = document.querySelector('.messages')
+    let erroExiste = document.getElementById('erro-senha');
+
+  // Se as senhas não coincidirem
+    if (document.getElementById('user-pwd').value !== document.getElementById('confirm-pwd').value) {
+        if (!erroExiste) {
+            const li = document.createElement('li');
+            li.classList.add('alert', 'alert-danger');
+            li.id = 'erro-senha';
+            li.textContent = 'As senhas não coincidem!';
+            ul.appendChild(li);
+        }
+    } else {
+        if (erroExiste) {
+            erroExiste.remove();
+        }
+    }
+}
 
 // Função para aplicar o tema escuro
 function aplicarTemaEscuro() {
@@ -90,6 +111,7 @@ temaEscuro.addEventListener('change', () => {
     }
     localStorage.setItem('temaEscuroAtivo', temaEscuro.checked);
 });
+
 
 
 // Temporizador da mensagem de sessão

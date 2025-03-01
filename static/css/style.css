@@ -275,7 +275,7 @@ nav{
 .button-search{
     position: absolute;
     left: 15px;
-    top: 24%;
+    top: 15%;
     background-color: transparent;
     border: none;
 }
@@ -322,7 +322,7 @@ ul.messages li.hidden{
 
 .botao-deleta{
     display: flex;
-    background-color: #F07F7F;
+    background-color: #FF6B6B;
     color: white;
     border: none;
     width: 25%;
@@ -367,7 +367,7 @@ ul.messages li.hidden{
 }
 
 .botao-concluir:hover{
-    background-color: #3fee70;
+    background-color: #28A745;
     box-shadow: 3px 3.5px 4px rgba(0, 0, 0, 0.462);
 }
 
@@ -463,10 +463,8 @@ ul.messages li.hidden{
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: white;
-    padding: 20px;
+    padding: 50px;
     border-radius: 10px;
-    width: 40%;
-    height: 70%;
 }
 
 .close {

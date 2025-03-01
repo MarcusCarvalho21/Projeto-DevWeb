@@ -26,9 +26,9 @@ urlpatterns = [
     path('tarefas/edit/<int:id>', editTarefa, name='editTarefa'),
     path('tarefas/mudastatus/<int:id>', mudaStatus, name='mudaStatus'),
     path('tarefas/deleta/<int:id>', delTarefa, name='delTarefa'),
-    path('perfil/', perfilUser, name='perfilUser'),
-    path('perfil/mudastatus/<int:id>', mudaStatus, name='mudaStatusPerfil'),
-    path('perfil/deleta/<int:id>', delTarefa, name='delTarefaPerfil'),
+    path('dashboard/', perfilUser, name='perfilUser'),
+    path('dashboard/mudastatus/<int:id>', mudaStatus, name='mudaStatusPerfil'),
+    path('dashboard/deleta/<int:id>', delTarefa, name='delTarefaPerfil'),
     path('auth/', include('usuarios.urls')),
     path('', index, name='index')
 ]

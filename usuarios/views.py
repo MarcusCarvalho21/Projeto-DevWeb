@@ -35,9 +35,9 @@ def cadastro(request):
         else:
             user = User.objects.create_user(username=username, email=email, first_name=name, password=senha)
             user.save()
-            messages.success(request, 'Usuário cadastrado com sucesso')
+            messages.success(request, 'Oba!, Seja bem vindo, '+username)
             
-        return redirect('/auth/cadastro/')
+        return redirect('/auth/login/')
             
 
 def login(request):

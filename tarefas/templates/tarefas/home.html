@@ -76,7 +76,8 @@
         if (diferencaEmDias === 0) {
             elementoTempoRestante.innerText = 'Hoje é o último dia!';
         } else if (diferencaEmDias < 0) {
-            elementoTempoRestante.innerText = 'Esta tarefa já está atrasada!';
+            flexao = diferencaEmDias < -1 ? 'dias' : 'dia' 
+            elementoTempoRestante.innerText = 'Esta tarefa está com um atraso de '+ diferencaEmDias * -1 + ' ' + flexao;
         } else {
             elementoTempoRestante.innerText = diferencaEmDias + ' dias restantes';
         }
