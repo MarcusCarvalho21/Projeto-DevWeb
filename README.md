@@ -16,8 +16,8 @@
 
 1. Clone o repositório:  
    ```sh
-   git clone https://github.com/seu-usuario/django-todo-list.git
-   cd django-todo-list 
+   git clone https://github.com/FilipeTorresBR/smoothflow.git
+   cd smoothflow
    ```
 2. Crie e ative um ambiente virtual:
     ```sh
@@ -38,7 +38,7 @@
       python manage.py runserver
     ```
 
-Acesse o aplicativo em http://127.0.0.1:8000/.
+Acesse a aplicação em http://127.0.0.1:8000/.
 
 📷 Capturas de Tela
 <p>
